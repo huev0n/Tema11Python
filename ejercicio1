@@ -1,0 +1,25 @@
+import sqlite3
+
+conexion = sqlite3.connect('mifichero.db')
+cursor = conexion.cursor()
+
+cursor.execute("CREATE TABLE Alumnos (Id INT, Nombre TEXT, Apellido TEXT)")
+
+cursor.execute("INSERT INTO Alumnos VALUES(1,'Jose', 'Rodriguez')")
+cursor.execute("INSERT INTO Alumnos VALUES(2,'Manuel', 'Pérez')")
+cursor.execute("INSERT INTO Alumnos VALUES(3,'Pablo', 'Jimenez')")
+cursor.execute("INSERT INTO Alumnos VALUES(4,'Jose', 'González')")
+cursor.execute("INSERT INTO Alumnos VALUES(5,'María', 'García')")
+cursor.execute("INSERT INTO Alumnos VALUES(6,'Patricia', 'Gutiérrez')")
+cursor.execute("INSERT INTO Alumnos VALUES(7,'Cristina', 'Pérez')")
+cursor.execute("INSERT INTO Alumnos VALUES(8,'Alejandro', 'García')")
+
+conexion.commit()
+
+cursor.execute("SELECT * FROM Alumnos WHERE Nombre = 'Pablo' ")
+
+filas = cursor.fetchall()
+
+print(filas)
+
+conexion.close()
